@@ -1,0 +1,54 @@
+bingo = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for turn in range(9):
+
+    print()
+    print("===== 빙고판 =====")
+
+    for row in bingo:
+        print(row)
+
+    number = int(input("숫자를 선택하세요: "))
+
+    # 숫자를 X로 바꾸기
+    for i in range(3):
+        for j in range(3):
+            if bingo[i][j] == number:
+                bingo[i][j] = "X"
+
+    # 빙고 확인
+    bingo_count = 0
+
+    # 가로 확인
+    for i in range(3):
+        if bingo[i][0] == "X" and bingo[i][1] == "X" and bingo[i][2] == "X":
+            bingo_count = bingo_count + 1
+
+    # 세로 확인
+    for i in range(3):
+        if bingo[0][i] == "X" and bingo[1][i] == "X" and bingo[2][i] == "X":
+            bingo_count = bingo_count + 1
+
+    # 대각선 확인
+    if bingo[0][0] == "X" and bingo[1][1] == "X" and bingo[2][2] == "X":
+        bingo_count = bingo_count + 1
+
+    if bingo[0][2] == "X" and bingo[1][1] == "X" and bingo[2][0] == "X":
+        bingo_count = bingo_count + 1
+
+    print("현재 빙고:", bingo_count)
+
+    if bingo_count >= 1:
+        print("빙고!")
+        print("게임 성공!")
+        break
+
+print()
+print("===== 최종 빙고판 =====")
+
+for row in bingo:
+    print(row)
